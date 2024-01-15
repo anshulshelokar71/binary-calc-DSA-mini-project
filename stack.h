@@ -1,3 +1,5 @@
+#ifndef STACK_H_INCLUDED
+#define STACK_H_INCLUDED
 #include"list.h"
 #define MAX 2048
 
@@ -31,8 +33,9 @@ typedef struct cstack{
 }cstack;
 
 void c_init(cstack *s);
-void cpush(cstack *s);
+void cpush(cstack *s,char op);
 char cpop(cstack *s);
 int cempty(cstack *s);
 int cfull(cstack *s);
 
+#endif // STACK_H_INCLUDED
