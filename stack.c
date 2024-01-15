@@ -1,4 +1,4 @@
-#include"list.h"
+// #include"list.h"
 #include"stack.h"
 #include<stdio.h>
 #include<stdlib.h>

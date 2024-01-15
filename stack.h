@@ -1,3 +1,5 @@
+#ifndef STACK_H_INCLUDED
+#define STACK_H_INCLUDED
 #include"list.h"
 #define MAX 2048
 
@@ -36,3 +38,4 @@ char cpop(cstack *s);
 int cempty(cstack *s);
 int cfull(cstack *s);
 
+#endif // STACK_H_INCLUDED

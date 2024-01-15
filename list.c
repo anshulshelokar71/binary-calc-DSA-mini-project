@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include "list.h"
-// #include "stack.h"
+#include<string.h>
+// #include "list.h"
+#include "stack.h"
 
 void init(list *l)
 {
