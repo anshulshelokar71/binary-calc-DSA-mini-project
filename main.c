@@ -317,6 +317,7 @@ list *infix(char *str)
             case '/':
             case '*':
             case '-':
+            case '%':
                 cpush(&cs, t->op);
                 break;
             case '(':
@@ -384,6 +385,9 @@ list *infix(char *str)
                         case '*':
                             push1(&a, multi(y, z));
                             break;
+                        case '%':
+								push1(&a, modulus(y,z));
+								break;
                         }
                         if (op2 != '(')
                         {
@@ -417,6 +421,9 @@ list *infix(char *str)
                             case '*':
                                 push1(&a, multi(y, z));
                                 break;
+                            case '%':
+								push1(&a, modulus(y,z));
+								break;
                             }
                         }
                     }
@@ -460,6 +467,9 @@ list *infix(char *str)
                         case '*':
                             x = multi(x, y);
                             break;
+                        case '%':
+									x = modulus(x, y);
+									break;
                         }
                         switch (op1)
                         {
@@ -475,6 +485,9 @@ list *infix(char *str)
                         case '*':
                             push1(&a, multi(x, z));
                             break;
+                        case '%':
+									push1(&a, modulus(x,z));
+									break;
                         }
                     }
                 }
@@ -554,6 +567,9 @@ list *infix(char *str)
                     case '*':
                         push2(&e, multi(z, y));
                         break;
+                    case '%':
+							push2(&e, modulus(z,y));
+							break;
                     }
                     break;
                 }
@@ -591,6 +607,9 @@ list *infix(char *str)
                     case '*':
                         push2(&e, multi(z, y));
                         break;
+                    case '%':
+							push2(&e, modulus(z, y));
+							break;
                     }
                     cpush(&cs, op2);
                 }
@@ -634,6 +653,9 @@ list *infix(char *str)
                     case '*':
                         push2(&e, multi(y, x));
                         break;
+                    case '%':
+							push2(&e, modulus(y, x));
+							break;
                     }
                     push2(&e, z);
                     cpush(&cs, op1);
@@ -854,7 +876,7 @@ int main(int argc, char *argv[])
     printf("                    00000            00000\n");
     printf("====================== BC with version:1.o ======================\n");
     printf("Note :- For exit press Enter\n");
-    printf("Rajkumar.V.Sawant - 111903066 - sawantrv19.comp@coep.ac.in\n");
+    printf("Anshul U. Shelokar - 612203163\n");
     char str[COUNT];
     int x;
     list *ans;
@@ -866,7 +888,7 @@ int main(int argc, char *argv[])
         if (ans == NULL)
         {
             // Standard error message
-            fprintf(stderr, "Erorr in expression\n");
+            fprintf(stderr, "Error in expression\n");
         }
         else
         {

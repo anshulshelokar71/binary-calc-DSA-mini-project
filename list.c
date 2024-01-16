@@ -30,7 +30,7 @@ void insert(list *l, int pos, int ele)
         return;
     }
     p = l->head;
-    for (int i = 0; i < pos - 1; i++)
+    for (int i = 0; i < pos-1; i++)
     {
         p = p->next;
     }
@@ -46,8 +46,8 @@ void insert(list *l, int pos, int ele)
     if (pos != l->len)
     {
         t->next = p->next;
-        p->next->prev = t;
         t->prev = p;
+        p->next->prev = t;
         p->next = t;
         l->len++;
         return;
@@ -67,7 +67,7 @@ int delete(list *l, int pos)
 {
     node *t, *p;
     int num;
-    if (pos < 0 || pos >= l->len || l->head == NULL)
+    if (pos < 0 || pos >= l->len)
     {
         return 0;
     }
@@ -76,6 +76,9 @@ int delete(list *l, int pos)
     {
         p = p->next;
     }
+    if(l->head == NULL) {
+		return 0;
+	}
     if (l->len == 1)
     {
         num = p->data;
@@ -85,23 +88,22 @@ int delete(list *l, int pos)
     }
     if (pos == 0)
     {
-        t = l->head;
-        l->head = t->next;
-        l->head->prev = NULL;
-        num = t->data;
-        free(t);
-        l->len--;
-        return num;
+       num = p->data;
+		p->next->prev = NULL;
+		l->head = p->next;
+		free(p);
+		l->len--;
+		return num;
     }
     if (pos == l->len - 1)
     {
-        t = p->next;
-        p->next = NULL;
-        num = t->data;
-        l->tail = p;
-        free(t);
-        l->len--;
-        return num;
+        num = p->next->data;
+		t = p->next;
+		p->next = NULL;
+		l->tail = p;
+		free(t);
+		l->len--;
+		return num;
     }
     t = p->next;
     p->next = t->next;
@@ -130,8 +132,9 @@ int dec(list *l)
 void traverse(list *l, int arg)
 {
     node *p;
-    int i, flag, flag1, print;
-    i = flag = flag1 = print = 0;
+    int i = 0;
+	int flag = 0, print = 0;
+	int flag1 = 0;
     p = l->head;
     if (!p)
     {
@@ -191,7 +194,7 @@ int show(list *l, int pos)
     if (pos < 0 || pos > l->len)
         return 0;
     p = l->head;
-    for (int i = 0; i <= pos - 1; i++)
+    for (int i = 0; i < pos; i++)
     {
         p = p->next;
     }

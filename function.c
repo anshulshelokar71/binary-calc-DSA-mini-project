@@ -13,13 +13,15 @@ list *sub(list *l1, list *l2);
 
 void copy(list *l1, list *l2)
 {
+	int dec, i, num, sign;
     init(l2);
-    l2->sign = l1->sign;
-    l2->dec = l1->dec;
     for (int i = 0; i < l1->len; i++)
     {
-        append(l2, show(l1, i));
+        num = show(l1, i);
+		append(l2, num);    
     }
+    l2->sign = l1->sign;
+    l2->dec = l1->dec;
     return;
 }
 
@@ -33,11 +35,12 @@ int compare(list *l1, list *l2)
     {
         return -1;
     }
-    int a = dec(l1) - dec(l2);
+    int a = (dec(l1) - dec(l2));
+    int b =a;
     if (a > 0)
     {
         int i = 0;
-        while (i < a)
+        while (i < b)
         {
             append(l2, 0);
             l2->dec++;
@@ -47,14 +50,14 @@ int compare(list *l1, list *l2)
     else if (a < 0)
     {
         int i = 0;
-        while (i < (-a))
+        while (i < (-b))
         {
             append(l1, 0);
             l1->dec++;
             i++;
         }
     }
-    int b = length(l1) - length(l2);
+    b = length(l1) - length(l2);
     if (b > 0)
     {
         int i = 0;
@@ -90,7 +93,7 @@ int compare(list *l1, list *l2)
 int checkzero(list *l)
 {
     int flag = 0;
-    for (int i = 0; i < length(l); i++)
+    for (int i = 0; i < l->len; i++)
     {
         if (show(l, i) != 0)
         {
@@ -107,11 +110,12 @@ list *add(list *l1, list *l2)
     sign2 = l2->sign;
     list *ans = (list *)malloc(sizeof(list));
     init(ans);
-    int a = dec(l1) - dec(l2);
+    int a = (dec(l1) - dec(l2));
+    int b=a;
     if (a > 0)
     {
         int i = 0;
-        while (i < a)
+        while (i < b)
         {
             append(l2, 0);
             l2->dec++;
@@ -121,7 +125,7 @@ list *add(list *l1, list *l2)
     else if (a < 0)
     {
         int i = 0;
-        while (i < (-a))
+        while (i < (-b))
         {
             append(l1, 0);
             l1->dec++;
@@ -149,7 +153,7 @@ list *add(list *l1, list *l2)
             ans->sign = -1;
             // l1->sign=l2->sign=1;
         }
-        else if (l1->sign == 1)
+        else 
         {
             ans->sign = 1;
         }
@@ -367,7 +371,7 @@ list *multi(list *l1, list *l2)
         {
             int m = length(l1) - 1;
             int carry1 = 0, carry2 = 0;
-            for (int j = k - i; j > y - 2; j--)
+            for (j = k - i; j > y - 2; j--)
             {
                 if (m != -1 && n != -1)
                 {

@@ -14,9 +14,7 @@ void push1(stack1 *s,list *l){
 }
 
 list *pop1(stack1 *s){
-    if(s->i==0){
-        return NULL;
-    }
+    
     list *t = (list *)malloc(sizeof(list));
     t = s->l[s->i-1];
     (s->i)--;
@@ -41,9 +39,7 @@ void push2(stack2 *s,list *l){
 }
 
 list *pop2(stack2 *s){
-    if(s->i==0){
-        return NULL;
-    }
+    
     list *t = (list *)malloc(sizeof(list));
     t = s->l[s->i-1];
     (s->i)--;
@@ -69,9 +65,7 @@ void cpush(cstack *s,char op){
 }
 
 char cpop(cstack *s){
-    if(cempty){
-        return '0';
-    }
+    
     char t = s->a[s->i-1];
     (s->i)--;
     return t;

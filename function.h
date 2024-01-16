@@ -1,5 +1,4 @@
-#ifndef NUMBER_H_INCLUDED
-#define NUMBER_H_INCLUDED
+
 #include"list.h"
 #include<math.h>
 
@@ -13,8 +12,8 @@ int checkzero(list*l);
 // double radian(list *l1);
 list *add(list*l1,list*l2);
 list *sub(list*l1,list*l2);
-// list *mul(list*l1,list*l2);
-// list *div(list*l1,list*l2);
-// list *modulus(list*l1,list*l2);
-// list *power(list*l1,list*l2);
-#endif // NUMBER_H_INCLUDED
+list *multi(list*l1,list*l2);
+list *division(list*l1,list*l2);
+list *modulus(list*l1,list*l2);
+list *power(list*l1,list*l2);
+
